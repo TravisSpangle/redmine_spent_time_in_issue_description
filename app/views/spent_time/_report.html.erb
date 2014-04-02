@@ -1,0 +1,27 @@
+<% if User.current.allowed_to?(:view_time_entries, @project) and @issue.time_entries.present? %>
+  <p><strong>Time Entries</strong></p>
+
+  <table class="issue-spent-time-description">
+    <thead>
+      <th>Spent On</th>
+      <th>User</th>
+      <th>Hours</th>
+      <th>Comments</th>
+    </thead>
+    <tbody>
+      <% @issue.time_entries.each do |entry| %>
+        <tr>
+          <td><%= entry.spent_on.strftime("%m/%d/%Y") %></td>
+          <td><%= link_to_user( entry.user ) %></td>
+          <td><%= entry.hours %></td>
+          <td><%= entry.comments %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'issue_spent_time_description', :plugin => 'redmine_spent_time_in_issue_description' %>
+<% end %>
+

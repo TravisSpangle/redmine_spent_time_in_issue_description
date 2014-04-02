@@ -1,0 +1,7 @@
+= Redmine Spent Time In Issue Description
+
+A little self explanitory. If the current user can view Time Entries then they will appear in the Issues Description. 
+
+= Install 
+
+To install follow the directions at: http://www.redmine.org/projects/redmine/wiki/Plugins Make sure the plugin is installed to <tt>plugins/redmine_spent_time_in_issue_description</tt>
