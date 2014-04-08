@@ -8,6 +8,5 @@ Redmine::Plugin.register :redmine_spent_time_in_issue_description do
   author 'Travis Spangle'
   description 'This will feed the spent time into the description of the issue.'
   version '0.5'
-  url 'http://example.com/path/to/plugin'
-  author_url 'http://example.com/about'
+  url 'https://github.com/TravisSpangle/redmine_spent_time_in_issue_description'
 end
