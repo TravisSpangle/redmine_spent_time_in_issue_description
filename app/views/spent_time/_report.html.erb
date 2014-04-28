@@ -1,5 +1,6 @@
 <% if User.current.allowed_to?(:view_time_entries, @project) and @issue.time_entries.present? %>
-  <p><strong>Time Entries</strong></p>
+  <hr />
+  <p><strong>Time Entries</strong> <%= link_to "see all #{@issue.time_entries.count} entries", project_issue_time_entries_path( @project , @issue ) if @issue.time_entries.count > 5 %> </p>
 
   <table class="issue-spent-time-description">
     <thead>
@@ -9,7 +10,7 @@
       <th>Comments</th>
     </thead>
     <tbody>
-      <% @issue.time_entries.each do |entry| %>
+      <% @issue.time_entries.last(5).each do |entry| %>
         <tr>
           <td><%= entry.spent_on.strftime("%m/%d/%Y") %></td>
           <td><%= link_to_user( entry.user ) %></td>
