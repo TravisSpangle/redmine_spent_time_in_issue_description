@@ -1,0 +1,38 @@
+<table>
+  <tbody>
+    <tr>
+      <th>Time Entries Maximum Display</th>
+      <td>
+        <input type="text" id="settings_spent_time_max_display"
+                     value="<%= settings['spent_time_max_display'] %>"
+                     name="settings[spent_time_max_display]" digits="true" required/>
+      </td>
+    </tr>
+    <tr>
+      <td colspan=2>
+        <span id="settingsfeedback"></span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<% content_for :header_tags do %>
+    <%= javascript_include_tag 'jquery.validate.js', :plugin => 'redmine_spent_time_in_issue_description' %>
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+          _form = $("form[action='/settings/plugin/redmine_spent_time_in_issue_description']");
+
+          _form.validate({
+            errorPlacement: function(error, element){
+              error.appendTo(_form);
+            }
+            });
+        });
+    </script>
+    <style type="text/css">
+      label.error{ color: red; }
+    </style>
+<% end %>

@@ -1,6 +1,6 @@
 <% if User.current.allowed_to?(:view_time_entries, @project) and @issue.time_entries.present? %>
   <hr />
-  <p><strong>Time Entries</strong> <%= link_to "see all #{@issue.time_entries.count} entries", project_issue_time_entries_path( @project , @issue ) if @issue.time_entries.count > 5 %> </p>
+  <p><strong>Time Entries</strong> <%= link_to "see all #{@issue.time_entries.count} entries", project_issue_time_entries_path( @project , @issue ) if @issue.time_entries.count > Setting.plugin_redmine_spent_time_in_issue_description['spent_time_max_display'].to_i %> </p>
 
   <table class="issue-spent-time-description">
     <thead>
@@ -10,7 +10,7 @@
       <th>Comments</th>
     </thead>
     <tbody>
-      <% @issue.time_entries.last(5).each do |entry| %>
+      <% @issue.time_entries.last( Setting.plugin_redmine_spent_time_in_issue_description['spent_time_max_display'].to_i ).each do |entry| %>
         <tr>
           <td><%= entry.spent_on.strftime("%m/%d/%Y") %></td>
           <td><%= link_to_user( entry.user ) %></td>
@@ -25,4 +25,3 @@
 <% content_for :header_tags do %>
     <%= stylesheet_link_tag 'issue_spent_time_description', :plugin => 'redmine_spent_time_in_issue_description' %>
 <% end %>
-
