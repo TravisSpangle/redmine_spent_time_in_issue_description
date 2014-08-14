@@ -1,3 +1,8 @@
-# English strings go here for Rails i18n
 en:
-  # my_label: "My label"
+    plugin_spent_time_in_issue:
+        timeEntries: Time entries
+        spentOn: Spent on
+        max_display: Time Entries Maximum Display
+        user: User
+        hours: Hours
+        comments: Comments
