@@ -1,3 +1,9 @@
 # English strings go here for Rails i18n
 en:
-  # my_label: "My label"
+  spid_time_max_display: "Time Entries Maximum Display"
+  spid_time_entries: "Time Entries"
+  spid_time_entries_count: "see all %{value} entries"
+  spid_spent_on: "Spent On"
+  spid_user: "User"
+  spid_hours: "Hours"
+  spid_comments: "Comments"
