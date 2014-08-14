@@ -1,14 +1,13 @@
 <% if User.current.allowed_to?(:view_time_entries, @project) and @issue.time_entries.present? %>
   <hr />
-  <p><strong><%= l(:spid_time_entries)%></strong> <%= link_to l(:spid_time_entries_count, @issue.time_entries.count.to_s ) , project_issue_time_entries_path( @project , @issue ) if @issue.time_entries.count > Setting.plugin_redmine_spent_time_in_issue_description['spent_time_max_display'].to_i %> </p>
-<%# .gsub(/total_time_entries/, @issue.time_entries.count.to_s ) %>
+  <p><strong>Time Entries</strong> <%= link_to "see all #{@issue.time_entries.count} entries", project_issue_time_entries_path( @project , @issue ) if @issue.time_entries.count > Setting.plugin_redmine_spent_time_in_issue_description['spent_time_max_display'].to_i %> </p>
 
   <table class="issue-spent-time-description">
     <thead>
-      <th><%= l(:spid_spent_on) %></th>
-      <th><%= l(:spid_user) %></th>
-      <th><%= l(:spid_hours) %></th>
-      <th><%= l(:spid_comments) %></th>
+      <th>Spent On</th>
+      <th>User</th>
+      <th>Hours</th>
+      <th>Comments</th>
     </thead>
     <tbody>
       <% @issue.time_entries.last( Setting.plugin_redmine_spent_time_in_issue_description['spent_time_max_display'].to_i ).each do |entry| %>
