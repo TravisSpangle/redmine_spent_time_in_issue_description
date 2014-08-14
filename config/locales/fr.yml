@@ -1,0 +1,8 @@
+fr:
+    plugin_spent_time_in_issue:
+        timeEntries: Temps passé
+        spentOn: Date
+        max_display: Nombre maximum d'entrées affichées
+        user: Utilisateur
+        hours: Nombre d'heures
+        comments: Commentaires
