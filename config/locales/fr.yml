@@ -6,3 +6,4 @@ fr:
         user: Utilisateur
         hours: Nombre d'heures
         comments: Commentaires
+        seeAllCount: Voir les %{count} entrées

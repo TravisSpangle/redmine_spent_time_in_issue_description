@@ -6,3 +6,4 @@ en:
         user: User
         hours: Hours
         comments: Comments
+        seeAllCount: See all %{count} entries
