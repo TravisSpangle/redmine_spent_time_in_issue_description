@@ -6,3 +6,5 @@ en:
         user: User
         hours: Hours
         comments: Comments
+        display_cols: Display Columns
+        activity: Activity

@@ -1,22 +1,21 @@
-<% #TODO: creat dynamic class that will format this table better if there are less than three columnes %>
 <% if User.current.allowed_to?(:view_time_entries, @project) and @issue.time_entries.present? %>
   <hr />
   <p><strong><%= t('plugin_spent_time_in_issue.timeEntries') %></strong> <%= link_to "see all #{@issue.time_entries.count} entries", project_issue_time_entries_path( @project , @issue ) if @issue.time_entries.count > Setting.plugin_redmine_spent_time_in_issue_description['spent_time_max_display'].to_i %> </p>
 
   <table class="issue-spent-time-description">
     <thead>
-      <%= content_tag(:th, t("plugin_spent_time_in_issue.spentOn") ) if Setting.plugin_redmine_spent_time_in_issue_description['show_spent_on'].eql? "true" %>
-      <%= content_tag(:th, t("plugin_spent_time_in_issue.user") ) if Setting.plugin_redmine_spent_time_in_issue_description['show_user'].eql? "true"  %>
-      <%= content_tag(:th, t("plugin_spent_time_in_issue.hours") ) if Setting.plugin_redmine_spent_time_in_issue_description['show_hours'].eql? "true"  %>
-      <%= content_tag(:th, t("plugin_spent_time_in_issue.comments") ) if Setting.plugin_redmine_spent_time_in_issue_description['show_comments'].eql? "true"  %>
+      <% %w( spentOn user hours comments activity).each do |column_value| %>
+        <%= content_tag(:th, t("plugin_spent_time_in_issue." << column_value ) ) if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? column_value %>
+      <%end %>
     </thead>
     <tbody>
       <% @issue.time_entries.last( Setting.plugin_redmine_spent_time_in_issue_description['spent_time_max_display'].to_i ).each do |entry| %>
         <tr>
-          <%= content_tag(:td, ( Setting.plugin_redmine_spent_time_in_issue_description['show_spent_on'] == "true" ? entry.spent_on.strftime("%m/%d/%Y") : "") ) %>
-          <%= content_tag(:td, ( Setting.plugin_redmine_spent_time_in_issue_description['show_user'] == "true"  ? link_to_user( entry.user )  : "" ) ) %>
-          <%= content_tag(:td, ( Setting.plugin_redmine_spent_time_in_issue_description['show_hours'] == "true"  ? entry.hours : "" ) ) %>
-          <%= content_tag(:td, ( Setting.plugin_redmine_spent_time_in_issue_description['show_comments'] == "true"  ? entry.comments: "" ) ) %>
+          <%= content_tag(:td, entry.spent_on.strftime("%m/%d/%Y") ) if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'spentOn'  %>
+          <%= content_tag(:td, link_to_user( entry.user )) if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'user'   %>
+          <%= content_tag(:td, entry.hours ) if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'hours'  %>
+          <%= content_tag(:td, entry.comments ) if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'comments'  %>
+          <%= content_tag(:td, entry.activity ) if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'activity'  %>
         </tr>
       <% end %>
     </tbody>

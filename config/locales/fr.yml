@@ -6,3 +6,5 @@ fr:
         user: Utilisateur
         hours: Nombre d'heures
         comments: Commentaires
+        display_cols: Afficher des colonnes
+        activity: Activité
