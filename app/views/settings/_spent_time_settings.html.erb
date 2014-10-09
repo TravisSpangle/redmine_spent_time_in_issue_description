@@ -8,6 +8,68 @@
                      name="settings[spent_time_max_display]" digits="true" required/>
       </td>
     </tr>
+
+    <% #TODO: Format these options and clean them up %>
+    <% #TODO: Move the Show / Hide label to translations %>
+    <tr>
+      <th></th>
+      <td>Show / Hide</td>
+    <tr>
+      <th><%= t('plugin_spent_time_in_issue.spentOn') %></th>
+      <td>
+        <input type="radio"
+                     value="true"
+                     <%= "checked" if settings['show_spent_on'] == "true" %>
+                     name="settings[show_spent_on]" />
+        <input type="radio"
+                     value=""
+                     <%= "checked" if settings['show_spent_on'] != "true" %>
+                     name="settings[show_spent_on]" />
+      </td>
+    </tr>
+
+    <tr>
+      <th><%= t('plugin_spent_time_in_issue.user') %></th>
+      <td>
+        <input type="radio"
+                     value="true"
+                     <%= "checked" if settings['show_user'] == "true" %>
+                     name="settings[show_user]" />
+        <input type="radio"
+                     value="false"
+                     <%= "checked" if settings['show_user'] != "true" %>
+                     name="settings[show_user]" />
+      </td>
+    </tr>
+
+    <tr>
+      <th><%= t('plugin_spent_time_in_issue.hours') %></th>
+      <td>
+        <input type="radio"
+                     value="true"
+                     <%= "checked" if settings['show_hours'] == "true" %>
+                     name="settings[show_hours]" />
+        <input type="radio"
+                     value="false"
+                     <%= "checked" if settings['show_hours'] != "true" %>
+                     name="settings[show_hours]" />
+      </td>
+    </tr>
+
+    <tr>
+      <th><%= t('plugin_spent_time_in_issue.comments') %></th>
+      <td>
+        <input type="radio"
+                     value="true"
+                     <%= "checked" if settings['show_comments'] == "true" %>
+                     name="settings[show_comments]"/>
+        <input type="radio"
+                     value="false"
+                     <%= "checked" if settings['show_comments'] != "true" %>
+                     name="settings[show_comments]"/>
+      </td>
+    </tr>
+
     <tr>
       <td colspan=2>
         <span id="settingsfeedback"></span>

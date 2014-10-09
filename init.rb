@@ -9,5 +9,5 @@ Redmine::Plugin.register :redmine_spent_time_in_issue_description do
   description 'This will feed the spent time into the description of the issue.'
   version '1'
   url 'https://github.com/TravisSpangle/redmine_spent_time_in_issue_description'
-  settings :default => { 'spent_time_max_display'  => 5 }, :partial => 'settings/spent_time_settings'
+  settings( :default => { 'spent_time_max_display'  => true, 'show_user' => true, 'show_hours' => true, 'show_comments' => true }, :partial => 'settings/spent_time_settings' )
 end
