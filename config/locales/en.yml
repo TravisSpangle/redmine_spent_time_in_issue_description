@@ -6,5 +6,9 @@ en:
         user: User
         hours: Hours
         comments: Comments
+<<<<<<< HEAD
         display_cols: Display Columns
         activity: Activity
+=======
+        seeAllCount: See all %{count} entries
+>>>>>>> FETCH_HEAD
