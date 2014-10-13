@@ -1,14 +1,11 @@
 en:
     plugin_spent_time_in_issue:
-        timeEntries: Time entries
+        timeEntries: Time Entries
         spentOn: Spent on
         max_display: Time Entries Maximum Display
         user: User
         hours: Hours
         comments: Comments
-<<<<<<< HEAD
         display_cols: Display Columns
         activity: Activity
-=======
-        seeAllCount: See all %{count} entries
->>>>>>> FETCH_HEAD
+        seeAllCount: ( See all %{count} entries )

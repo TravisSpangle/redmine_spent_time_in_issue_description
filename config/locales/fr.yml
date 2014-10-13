@@ -6,9 +6,6 @@ fr:
         user: Utilisateur
         hours: Nombre d'heures
         comments: Commentaires
-<<<<<<< HEAD
         display_cols: Afficher des colonnes
         activity: Activité
-=======
-        seeAllCount: Voir les %{count} entrées
->>>>>>> FETCH_HEAD
+        seeAllCount: ( Voir les %{count} entrées )
