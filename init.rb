@@ -10,7 +10,8 @@ Redmine::Plugin.register :redmine_spent_time_in_issue_description do
   version '1.3'
   url 'https://github.com/TravisSpangle/redmine_spent_time_in_issue_description'
   settings( :default => { 'spent_time_max_display'  => 5,
-                          'display_columns' => ["spentOn", "user", "hours", "comments"]
+                          'display_columns' => ["spentOn", "user", "hours", "comments"],
+                          'time_format' => 'decimal'
                         },
                         :partial => 'settings/spent_time_settings' )
 end

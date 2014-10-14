@@ -3,6 +3,16 @@ en:
         timeEntries: Time Entries
         spentOn: Spent on
         max_display: Time Entries Maximum Display
+        time_format: Time Format
+        time_format_decimal: Decimal ( 1.5 )
+        time_format_human: Human Readable ( 1hr ) 
+        datetime:
+          hours:
+            one: 1 hour
+            other: %{hours} hours
+          minutes:
+            one: 1 minute
+            other: %{minutes} minutes
         user: User
         hours: Hours
         comments: Comments

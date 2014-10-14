@@ -1,4 +1,5 @@
 <% if User.current.allowed_to?(:view_time_entries, @project) and @issue.time_entries.present? %>
+
   <hr />
   <p><strong><%= t('plugin_spent_time_in_issue.timeEntries') %></strong> <%= link_to "#{t "plugin_spent_time_in_issue.seeAllCount", count: @issue.time_entries.count}", project_issue_time_entries_path( @project , @issue ) if @issue.time_entries.count > Setting.plugin_redmine_spent_time_in_issue_description['spent_time_max_display'].to_i %> </p>
 
@@ -12,8 +13,36 @@
       <% @issue.time_entries.last( Setting.plugin_redmine_spent_time_in_issue_description['spent_time_max_display'].to_i ).each do |entry| %>
         <tr>
           <%= content_tag(:td, entry.spent_on.strftime("%m/%d/%Y") ) if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'spentOn'  %>
-          <%= content_tag(:td, link_to_user( entry.user )) if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'user'   %>
-          <%= content_tag(:td, entry.hours ) if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'hours'  %>
+          <%= content_tag(:td, link_to_user( entry.user )) if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'user' %>
+          <% if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'hours'
+
+               if Setting.plugin_redmine_spent_time_in_issue_description['time_format'].eql? "human"
+                 hours = entry.hours.to_i
+                 minutes = entry.hours * 60
+                 minutes = (minutes - hours * 60 ).to_i
+
+                 time_spent = ""
+
+                 if hours == 1
+                   time_spent = t('plugin_spent_time_in_issue.datetime.hours.one')
+                 elsif hours > 1
+                   time_spent = t('plugin_spent_time_in_issue.datetime.hours.other', hours: hours )
+                 end
+
+                 if minutes == 1
+                   time_spent << " " << t('plugin_spent_time_in_issue.datetime.minutes.one')
+                 elsif minutes > 1
+                   time_spent << " " << t('plugin_spent_time_in_issue.datetime.minutes.other', minutes: minutes )
+                 end
+               else
+                 time_spent = entry.hours
+               end
+
+             %>
+
+           <%= content_tag(:td, time_spent ) %>
+
+          <% end %>
           <%= content_tag(:td, entry.comments ) if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'comments'  %>
           <%= content_tag(:td, entry.activity ) if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'activity'  %>
         </tr>

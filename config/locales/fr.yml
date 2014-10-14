@@ -3,6 +3,16 @@ fr:
         timeEntries: Temps passé
         spentOn: Date
         max_display: Nombre maximum d'entrées affichées
+        time_format: Time Format
+        time_format_decimal: Decimal ( 1.5 )
+        time_format_human: Human Readable ( 1hr ) 
+        datetime:
+          hours:
+            one: 1 hour
+            other: %{hours} hours
+          minutes:
+            one: 1 minute
+            other: %{minutes} minutes
         user: Utilisateur
         hours: Nombre d'heures
         comments: Commentaires
