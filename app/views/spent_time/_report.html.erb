@@ -1,4 +1,4 @@
-<% if User.current.allowed_to?(:view_time_entries, @project) and @issue.time_entries.present? %>
+<% if User.current.allowed_to?(:view_time_entries, @project) and @issue.time_entries.present?  and (Setting.plugin_redmine_spent_time_in_issue_description['report_location'].eql? "ticket_body" or Setting.plugin_redmine_spent_time_in_issue_description['report_location'].nil? )%>
 
   <hr />
   <p><strong><%= t('plugin_spent_time_in_issue.timeEntries') %></strong> <%= link_to "#{t "plugin_spent_time_in_issue.seeAllCount", count: @issue.time_entries.count}", project_issue_time_entries_path( @project , @issue ) if @issue.time_entries.count > Setting.plugin_redmine_spent_time_in_issue_description['spent_time_max_display'].to_i %> </p>

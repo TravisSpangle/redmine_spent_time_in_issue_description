@@ -1,0 +1,59 @@
+<% if User.current.allowed_to?(:view_time_entries, @project) and @issue.time_entries.present? and ( Setting.plugin_redmine_spent_time_in_issue_description['report_location'].eql? "below_revisions" or Setting.plugin_redmine_spent_time_in_issue_description['report_location'].eql? "above_revisions") %>
+
+     <script type="text/javascript">
+        $(document).ready(function() {
+
+            <% if @issue.changesets.present? %>
+              lonely_spenttime = ""
+            <% else %>
+              lonely_spenttime = " lonely_spenttime"
+            <% end %>
+
+            var spent_time = [
+            <% @issue.time_entries.last( Setting.plugin_redmine_spent_time_in_issue_description['spent_time_max_display'].to_i ).each_with_index do |entry, index| %>
+              <%= "," if index > 0 %> {
+              "spent_on":"<%= entry.spent_on.strftime("%m/%d/%Y") %>",
+              "user":" <%= entry.user %>",
+              "hours":"<%= entry.hours %>",
+              "activity":"<%= entry.activity %>",
+              "comments":"<%= entry.comments %>",
+
+              }
+            <% end %>
+              ];
+
+            var toggle = "odd"
+            var time_entries = ' <div id="issue-spenttime" class="'+lonely_spenttime+'"><h3>Spent Time Report</h3>'
+              $.each( spent_time, function(idnex,entry){
+                  time_entries += '<div class="spenttimeentry '+toggle+'">'
+                time_entries += '<p>'
+                time_entries += '<span>' + entry.spent_on + '</span>'
+                time_entries += '<span>' + entry.user + '</span>'
+                time_entries += '<span>' + entry.hours + '</span>'
+                time_entries += '<br /> ' + entry.comments
+                time_entries += '</p>'
+                time_entries += '</div>'
+
+                if( toggle === "odd" ){
+                  toggle = "even"
+                  }else{
+                  toggle = "odd"
+                }
+
+                  });
+            time_entries += '</div>'
+
+            <% if @issue.changesets.present? and Setting.plugin_redmine_spent_time_in_issue_description['report_location'].eql? "below_revisions" %>
+              $("#issue-changesets").append(time_entries)
+              console.log("below revisions");
+            <% elsif @issue.changesets.present? %>
+              $("#issue-changesets").prepend(time_entries)
+              console.log("above revisions");
+            <% else %>
+              $("#history").before(time_entries)
+            <% end %>
+        });
+
+    </script>
+
+<% end %>

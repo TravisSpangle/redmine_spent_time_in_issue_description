@@ -37,8 +37,31 @@
       </td>
     <tr>
 
+    <tr>
+      <th style="vertical-align:top" ><%= t('plugin_spent_time_in_issue.max_display') %></th>
+      <td>
+        <div class="placement_examples" >
+         <input type="radio" name="settings[report_location]" value="below_revisions" <%= "checked" if settings['report_location'].eql? "below_revisions" %> >Below Revisions
+          <br />
+         <%= image_tag('spent_time_report_below_revisions.png', :plugin => 'redmine_spent_time_in_issue_description') %>
+        </div>
+        <div class="placement_examples" >
+         <input type="radio" name="settings[report_location]" value="above_revisions" <%= "checked" if settings['report_location'].eql? "above_revisions" %> >Above Revisions
+          <br />
+         <%= image_tag("spent_time_report_above_revisions.png", :plugin => 'redmine_spent_time_in_issue_description') %>
+        </div>
+        <div class="placement_examples" >
+          <input type="radio" name="settings[report_location]" value="ticket_body" <%= "checked" if settings['report_location'].eql? "ticket_body" or settings['report_location'].nil? %> >Ticket Body
+          <br />
+          <%= image_tag("spent_time_report_in_ticket_body.png", :plugin => 'redmine_spent_time_in_issue_description') %>
+        </div>
+      </td>
+    </tr>
+
   </tbody>
 </table>
+
+<%= settings %>
 
 
 
@@ -58,5 +81,7 @@
     </script>
     <style type="text/css">
       label.error{ color: red; }
+      div.placement_examples{ float: right; padding-right: 15px }
+      div.placement_examples > img { border: 1px solid #505050; margin-top: 10px; }
     </style>
 <% end %>
