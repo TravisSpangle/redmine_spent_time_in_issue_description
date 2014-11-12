@@ -1,4 +1,4 @@
-<% if User.current.allowed_to?(:view_time_entries, @project) and @issue.time_entries.present? and ( Setting.plugin_redmine_spent_time_in_issue_description['report_location'].eql? "below_revisions" or Setting.plugin_redmine_spent_time_in_issue_description['report_location'].eql? "above_revisions") %>
+<% if  params[:controller].eql? "IssueController" and ( Setting.plugin_redmine_spent_time_in_issue_description['report_location'].eql? "below_revisions" or Setting.plugin_redmine_spent_time_in_issue_description['report_location'].eql? "above_revisions") and params[:action].eql? "show" and User.current.allowed_to?(:view_time_entries, @project) and @issue.present?  and  @issue.time_entries.present? %>
 
      <script type="text/javascript">
         $(document).ready(function() {
