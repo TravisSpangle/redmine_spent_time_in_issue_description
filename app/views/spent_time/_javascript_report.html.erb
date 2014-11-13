@@ -69,6 +69,13 @@
                 }
 
                   });
+
+            <% if @issue.time_entries.count > Setting.plugin_redmine_spent_time_in_issue_description['spent_time_max_display'].to_i %>
+              time_entries += '<div class="spenttimeentry '+toggle+'">'
+              time_entries += '<%=raw link_to "#{t "plugin_spent_time_in_issue.seeAllCount", count: @issue.time_entries.count}", issue_time_entries_path(  @issue )  %>'
+              time_entries += '</div>'
+            <% end %>
+
             time_entries += '</div>'
 
             <% if @issue.changesets.present? and Setting.plugin_redmine_spent_time_in_issue_description['report_location'].eql? "below_revisions" %>
