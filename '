@@ -39,11 +39,11 @@
 
                %>
 
-              <%=raw '"spent_on":"' << entry.spent_on.strftime("%m/%d/%Y") << '",' if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'spentOn' %>
-              <%=raw '"user":"' <<  entry.user.to_s << '",' if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'user' %>
-              <%=raw '"hours":"' << time_spent << '",' if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'hours' %>
-              <%=raw '"activity":"' << entry.activity.to_s << '",'  if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'activity' %>
-              <%=raw '"comments":"' << entry.comments << '",' if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'comments' %>
+              <%# =raw '"spent_on":"' << entry.spent_on.strftime("%m/%d/%Y") << '",' %>
+              <%=raw '"user":"' <<  entry.user.to_s << '",' %>
+              <%=raw '"hours":"' << time_spent << '",' %>
+              <%=raw '"activity":"' << entry.activity.to_s << '",' %>
+              <%=raw '"comments":"' << entry.comments << '",' %>
 
               }
             <% end %>
@@ -54,11 +54,10 @@
               $.each( spent_time, function(idnex,entry){
                   time_entries += '<div class="spenttimeentry '+toggle+'">'
                 time_entries += '<p>'
-                if ( entry.spent_on !== undefined){ time_entries += '<span>' + entry.spent_on + '</span>' }
-                if ( entry.user !== undefined){ time_entries += '<span>' + entry.user + '</span>' }
-                if ( entry.activity !== undefined){ time_entries += '<span>' + entry.activity + '</span>' }
-                if ( entry.hours !== undefined){ time_entries += '<span>' + entry.hours + '</span>' }
-                if ( entry.comments !== undefined){ time_entries += '<br /> ' + entry.comments }
+                time_entries += '<span>' + entry.spent_on + '</span>'
+                time_entries += '<span>' + entry.user + '</span>'
+                time_entries += '<span>' + entry.hours + '</span>'
+                time_entries += '<br /> ' + entry.comments
                 time_entries += '</p>'
                 time_entries += '</div>'
 
