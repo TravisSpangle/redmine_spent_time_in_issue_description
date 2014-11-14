@@ -26,6 +26,34 @@ module IssuesHelperPatch
 
   end
 
+  def report_time_spent(entry)
+    if Setting.plugin_redmine_spent_time_in_issue_description['time_format'].eql? "human"
+      time_spent = humanized_time( entry.hours )
+    else
+      time_spent = entry.hours
+    end
+  end
+
+  def is_report_time_shown( entry )
+    Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'hours'
+  end
+
+  def is_spent_on_shown( entry )
+    Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'spentOn'
+  end
+
+  def is_user_shown( entry )
+    Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'user'
+  end
+
+  def is_comment_shown( entry )
+    Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'comments'
+  end
+
+  def is_activity_shown( entry )
+    Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'activity'
+  end
+
   def self.included(receiver)
     receiver.send :include, InstanceMethods
   end

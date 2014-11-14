@@ -17,23 +17,11 @@
     <tbody>
       <% @issue.time_entries.last( Setting.plugin_redmine_spent_time_in_issue_description['spent_time_max_display'].to_i ).each do |entry| %>
         <tr>
-          <%= content_tag(:td, entry.spent_on.strftime("%m/%d/%Y") ) if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'spentOn'  %>
-          <%= content_tag(:td, link_to_user( entry.user )) if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'user' %>
-          <% if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'hours'
-
-               if Setting.plugin_redmine_spent_time_in_issue_description['time_format'].eql? "human"
-                 time_spent = humanized_time( entry.hours )
-               else
-                 time_spent = entry.hours
-               end
-
-             %>
-
-           <%= content_tag(:td, time_spent ) %>
-
-          <% end %>
-          <%= content_tag(:td, entry.comments ) if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'comments'  %>
-          <%= content_tag(:td, entry.activity ) if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'activity'  %>
+          <%= content_tag(:td, entry.spent_on.strftime("%m/%d/%Y") ) if is_spent_on_shown( entry ) %>
+          <%= content_tag(:td, link_to_user( entry.user )) if is_user_shown( entry ) %>
+          <%= content_tag(:td, report_time_spent( entry ) ) if is_report_time_shown( entry ) %>
+          <%= content_tag(:td, entry.comments ) if is_comment_shown( entry ) %>
+          <%= content_tag(:td, entry.activity ) if is_activity_shown( entry ) %>
         </tr>
       <% end %>
     </tbody>

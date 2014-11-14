@@ -13,18 +13,11 @@
             <% @issue.time_entries.last( Setting.plugin_redmine_spent_time_in_issue_description['spent_time_max_display'].to_i ).each_with_index do |entry, index| %>
               <%= "," if index > 0 %> {
 
-                <% if Setting.plugin_redmine_spent_time_in_issue_description['time_format'].eql? "human"
-                    time_spent = humanized_time( entry.hours )
-                   else
-                    time_spent = entry.hours
-                   end
-               %>
-
-              <%=raw '"spent_on":"' << entry.spent_on.strftime("%m/%d/%Y") << '",' if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'spentOn' %>
-              <%=raw '"user":"' <<  entry.user.to_s << '",' if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'user' %>
-              <%=raw '"hours":"' << time_spent << '",' if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'hours' %>
-              <%=raw '"activity":"' << entry.activity.to_s << '",'  if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'activity' %>
-              <%=raw '"comments":"' << entry.comments << '",' if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'comments' %>
+              <%=raw '"spent_on":"' << entry.spent_on.strftime("%m/%d/%Y") << '",' if is_spent_on_shown( entry ) %>
+              <%=raw '"user":"' <<  entry.user.to_s << '",' if is_user_shown( entry ) %>
+              <%=raw '"hours":"' << report_time_spent( entry ) << '",' if is_report_time_shown( entry ) %>
+              <%=raw '"activity":"' << entry.activity.to_s << '",'  if is_activity_shown( entry ) %>
+              <%=raw '"comments":"' << entry.comments << '",' if is_comment_shown( entry ) %>
 
               }
             <% end %>
