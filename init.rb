@@ -1,4 +1,3 @@
-
 require 'redmine'
 
 require_dependency 'issue_description_with_spent_time_hook_listener'
@@ -15,4 +14,9 @@ Redmine::Plugin.register :redmine_spent_time_in_issue_description do
                           'report_location' => 'ticket_body'
                         },
                         :partial => 'settings/spent_time_settings' )
+end
+
+Rails.configuration.to_prepare do
+    require_dependency 'issue_helper_patch'
+    IssuesHelper.send     :include, IssuesHelperPatch
 end

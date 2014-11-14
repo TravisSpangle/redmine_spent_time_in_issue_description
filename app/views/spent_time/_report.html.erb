@@ -22,23 +22,7 @@
           <% if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'hours'
 
                if Setting.plugin_redmine_spent_time_in_issue_description['time_format'].eql? "human"
-                 hours = entry.hours.to_i
-                 minutes = entry.hours * 60
-                 minutes = (minutes - hours * 60 ).to_i
-
-                 time_spent = ""
-
-                 if hours == 1
-                   time_spent = t('plugin_spent_time_in_issue.datetime.hours.one')
-                 elsif hours > 1
-                   time_spent = t('plugin_spent_time_in_issue.datetime.hours.other', hours: hours )
-                 end
-
-                 if minutes == 1
-                   time_spent << " " << t('plugin_spent_time_in_issue.datetime.minutes.one')
-                 elsif minutes > 1
-                   time_spent << " " << t('plugin_spent_time_in_issue.datetime.minutes.other', minutes: minutes )
-                 end
+                 time_spent = humanized_time( entry.hours )
                else
                  time_spent = entry.hours
                end

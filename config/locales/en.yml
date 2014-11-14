@@ -9,13 +9,13 @@ en:
         datetime:
           hours:
             one: 1 hour
-            other: %{hours} hours
+            other: "%{hours} hours"
           minutes:
             one: 1 minute
-            other: %{minutes} minutes
+            other: "%{minutes} minutes"
         user: User
         hours: Hours
         comments: Comments
         display_cols: Display Columns
         activity: Activity
-        seeAllCount: ( See all %{count} entries )
+        seeAllCount: "( See all %{count} entries )"
