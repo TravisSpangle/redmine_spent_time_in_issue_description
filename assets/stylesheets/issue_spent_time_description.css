@@ -1,7 +1,6 @@
 table.issue-spent-time-description { width: 100%; text-align: left; }
 .spenttimeentry { border-bottom: 1px solid #ddd }
-#issue-spenttime.lonely_spenttime { padding-left: 1em; width: 45%;}
-#issue-spenttime { float: right; margin-left: 13m; margin-bottom: 1em; background: #fff; font-size: 90%; width: 100%; }
+#issue-spenttime { float: right; margin-bottom: 1em; background: #fff; font-size: 90%; width: 45%; padding-left: 1em;}
 #issue-spenttime > div > p { margin: 0px; margin-bottom: 1em; }
 #issue-spenttime > div > p > span { padding-right: 20px; }
 

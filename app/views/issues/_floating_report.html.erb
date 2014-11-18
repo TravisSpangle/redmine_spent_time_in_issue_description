@@ -1,0 +1,19 @@
+<div id="issue-spenttime" >
+  <h3>Spent Time Report</h3>
+
+  <% @issue.time_entries.last( Setting.plugin_redmine_spent_time_in_issue_description['spent_time_max_display'].to_i ).each_with_index do |entry, index| %>
+    <div class="spenttimeentry <%= ( index % 2 == 0 ? "even" : "odd" ) %>">
+      <p>
+        <%= content_tag(:span, entry.spent_on.strftime("%m/%d/%Y") ) if is_spent_on_shown( entry ) %>
+        <%= content_tag(:span, link_to_user( entry.user )) if is_user_shown( entry ) %>
+        <%= content_tag(:span, entry.activity ) if is_activity_shown( entry ) %>
+        <%= content_tag(:span, report_time_spent( entry ) ) if is_report_time_shown( entry ) %>
+        <%=raw "<br />" <<  content_tag(:span, entry.comments ) if is_comment_shown( entry ) %>
+      </p>
+    </div>
+  <% end %>
+</div>
+
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'issue_spent_time_description', :plugin => 'redmine_spent_time_in_issue_description' %>
+<% end %>
