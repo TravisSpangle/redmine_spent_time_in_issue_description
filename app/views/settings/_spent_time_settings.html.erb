@@ -29,9 +29,9 @@
     <tr>
       <th> <%= t("plugin_spent_time_in_issue.display_cols") %> </th>
       <td>
-        <select name="settings[display_columns][]" multiple style="width: 75px; height: 75px;">
+        <select name="settings[display_columns][]" multiple style="width: 75px; height: 75px;" class="required">
           <% %w( spentOn user hours comments activity).each do |column| %>
-            <option value="<%= column %>" <%= ( settings['display_columns'].include? column) ? "Selected" : "" %>><%= t("plugin_spent_time_in_issue."<< column )%></option>
+            <option value="<%= column %>" <%= ( ( settings['display_columns'] || '').include? column) ? "Selected" : "" %>><%= t("plugin_spent_time_in_issue."<< column )%></option>
           <% end %>
         </select>
       </td>
