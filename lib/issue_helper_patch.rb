@@ -1,4 +1,9 @@
 module IssuesHelperPatch
+
+  def self.included(base) # :nodoc:
+    base.send(:include, InstanceMethods)
+  end
+
   module InstanceMethods
 
     def humanized_time(entry_hours)
@@ -59,3 +64,4 @@ module IssuesHelperPatch
   end
 end
 
+IssuesHelper.send(:include, IssuesHelperPatch)
