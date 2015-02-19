@@ -14,6 +14,7 @@ class SetupIssueShow
     @current_version = [Redmine::VERSION::MAJOR, Redmine::VERSION::MINOR, Redmine::VERSION::TINY].join('.')
   end
 
+  # Location of file to use as Issue#show
   def show_file
     possible_files = @issues_directory.children(false).select { |files| files.to_s.index(/\d.*show/) }
     show_file = possible_files.sort { |x, y| y <=> x }.find do |file|

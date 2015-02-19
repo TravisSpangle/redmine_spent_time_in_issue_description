@@ -16,6 +16,7 @@ module IssuesHelperPatch
     end
   end
 
+  # Human readable format for Hour data
   def humanized_hour(hours)
     if hours == 1
       t('plugin_spent_time_in_issue.datetime.hours.one')
@@ -26,6 +27,7 @@ module IssuesHelperPatch
     end
   end
 
+  # Human readable format for Hour minute
   def humanized_minute(minutes)
     if minutes == 1
       ' ' << t('plugin_spent_time_in_issue.datetime.minutes.one')
@@ -36,6 +38,7 @@ module IssuesHelperPatch
     end
   end
 
+  # Time Spent value in format specified by configuration.
   def report_time_spent(entry)
     if Setting.plugin_redmine_spent_time_in_issue_description['time_format'].eql? 'human'
       humanized_time(entry.hours)

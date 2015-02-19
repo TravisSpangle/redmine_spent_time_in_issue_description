@@ -19,6 +19,7 @@ class SetupIssueShowTest < ActiveSupport::TestCase
     assert_equal @setup_issue_show.show_file.class, Pathname
   end
 
+  # Test the different versions of files that can be found.
   def test_correct_file_found
     @setup_issue_show.current_version = '2.3.1'
     assert_equal '2.3.1', @setup_issue_show.show_file.redmine_version, 'Did not find the exact match.'
