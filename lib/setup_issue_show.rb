@@ -1,8 +1,10 @@
 require 'redmine'
 require 'fileutils'
+require 'pathname_redmine_version'
 
 class SetupIssueShow
-  attr_reader :issues_directoy, :current_version
+  attr_accessor :issues_directory
+  attr_accessor :current_version
 
   def initialize
     @issues_directory =  Pathname.new( Redmine::Plugin.registered_plugins[:redmine_spent_time_in_issue_description].directory ).join("app","views","issues")
@@ -15,7 +17,9 @@ class SetupIssueShow
       version = file.to_s[0..4]
       version == @current_version || version < @current_version
     end
-    @issues_directory.join file
+
+    show_file = @issues_directory.join file unless file.nil?
+
   end
 
   def replace
