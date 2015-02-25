@@ -1,0 +1,5 @@
+# Keeping to style of Redmine
+---
+rules:
+  ignore:
+  - simplify_call_to_render_partial
