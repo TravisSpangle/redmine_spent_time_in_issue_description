@@ -16,15 +16,10 @@ Now has a configuration page to
 
 = Install 
 
-The plugin overwrites the Issue Show page. You need to know what version of Redmine you are running in order to clone the correct branch. If you are using Redmine Trunk then use the branch Redmine-Edge. Otherwise the latest releases of Redmine 2.5, 2.6, and 2.6.1 will be covered in the branch 2.5-2.6.
-
-
 Install the plugin with cloning the project into the plugins directory. Then run the migrate command.
 
 1. git clone https://github.com/TravisSpangle/redmine_spent_time_in_issue_description.git ./plugins/redmine_spent_time_in_issue_description/
-2. cd ./plugins/redmine_spent_time_in_issue_description/
-3. git checkout 2.5-2.6
-4. rake redmine:plugins:migrate
+2. rake redmine:plugins:migrate
 
 Please report isseus https://github.com/TravisSpangle/redmine_spent_time_in_issue_description/issues
 
