@@ -1,0 +1,1 @@
+Once the patch www.redmine.org/issues/19188 is applied I will have the view hooks I need to clean up this directory.
