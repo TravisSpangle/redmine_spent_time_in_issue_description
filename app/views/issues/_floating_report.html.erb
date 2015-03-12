@@ -4,7 +4,7 @@
   <% @issue.time_entries.last( Setting.plugin_redmine_spent_time_in_issue_description['spent_time_max_display'].to_i ).each_with_index do |entry, index| %>
     <div class="spenttimeentry <%= (index % 2 == 0 ? "even" : "odd") %>">
       <p>
-        <%= content_tag(:span, entry.spent_on.strftime("%m/%d/%Y")) if spent_on_shown? %>
+        <%= content_tag(:span, format_date( entry.spent_on ) ) if spent_on_shown? %>
         <%= content_tag(:span, link_to_user(entry.user)) if user_shown? %>
         <%= content_tag(:span, entry.activity) if activity_shown? %>
         <%= content_tag(:span, report_time_spent(entry)) if report_time_shown? %>

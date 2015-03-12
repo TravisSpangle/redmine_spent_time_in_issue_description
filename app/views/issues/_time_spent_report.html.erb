@@ -15,7 +15,7 @@
   <tbody>
     <% @issue.time_entries.last( Setting.plugin_redmine_spent_time_in_issue_description['spent_time_max_display'].to_i ).each do |entry| %>
       <tr>
-        <%= content_tag(:td, entry.spent_on.strftime("%m/%d/%Y") ) if spent_on_shown? %>
+        <%= content_tag(:td, format_date( entry.spent_on ) ) if spent_on_shown? %>
         <%= content_tag(:td, link_to_user( entry.user )) if user_shown? %>
         <%= content_tag(:td, report_time_spent(entry) ) if report_time_shown? %>
         <%= content_tag(:td, entry.comments ) if comment_shown? %>
