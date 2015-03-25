@@ -30,4 +30,14 @@ class SetupIssueShowTest < ActiveSupport::TestCase
     @setup_issue_show.current_version = '0.0.0'
     assert_nil @setup_issue_show.show_file
   end
+
+  # Test all version files
+  def test_version_files_found
+    Dir.glob( @setup_issue_show.issues_directory.join('*.show*') ).each do |file|
+      version = /(\d\.)+/.match( file )[0][0...-1]
+      @setup_issue_show.current_version = version
+
+      assert_equal "#{version}.show.html.erb", @setup_issue_show.show_file.basename.to_s, 'Did not find the expected version file.'
+    end
+  end
 end
