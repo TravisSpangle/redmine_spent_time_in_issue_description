@@ -13,7 +13,7 @@ Redmine::Plugin.register :redmine_spent_time_in_issue_description do
                        'time_format' => 'decimal',
                        'report_location' => 'ticket_body'
                     },
-           partial: 'settings/spent_time_settings')
+           partial: 'settings/spent_time_in_issue_description_settings')
 
   ActionDispatch::Callbacks.to_prepare do
     SetupIssueShow.new.replace
