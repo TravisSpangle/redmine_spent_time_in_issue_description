@@ -11,6 +11,7 @@
     <% %w( spentOn user hours comments activity).each do |column_value| %>
       <%= content_tag(:th, t("plugin_spent_time_in_issue." << column_value ) ) if Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? column_value %>
     <%end %>
+    <%= content_tag(:th ) %>
   </thead>
   <tbody>
     <% @issue.time_entries.last( Setting.plugin_redmine_spent_time_in_issue_description['spent_time_max_display'].to_i ).each do |entry| %>
@@ -20,6 +21,16 @@
         <%= content_tag(:td, report_time_spent(entry) ) if report_time_shown? %>
         <%= content_tag(:td, entry.comments ) if comment_shown? %>
         <%= content_tag(:td, entry.activity ) if activity_shown? %>
+        <% if entry.editable_by?(User.current) -%>
+          <td>
+            <%= link_to image_tag('edit.png'), edit_time_entry_path(entry),
+                                               :title => l(:button_edit) %>
+            <%= link_to image_tag('delete.png'), time_entry_path(entry),
+                                                 :data => {:confirm => l(:text_are_you_sure)},
+                                                 :method => :delete,
+                                                 :title => l(:button_delete) %>
+          <td>
+        <% end -%>
       </tr>
     <% end %>
   </tbody>
