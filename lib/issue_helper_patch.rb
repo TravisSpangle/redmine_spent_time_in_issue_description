@@ -13,6 +13,8 @@ module IssuesHelperPatch
 
       time_spent = humanized_hour(hours)
       time_spent << ' ' << humanized_minute(minutes) unless minutes < 1
+
+      time_spent
     end
   end
 
