@@ -1,0 +1,21 @@
+ru:
+    plugin_spent_time_in_issue:
+        timeEntries: Затраченное время
+        spentOn: Дата
+        max_display: Показывать макс. количество строк
+        time_format: Формат времени
+        time_format_decimal: Число ( 1.5 )
+        time_format_human: Человеческий ( 1ч )
+        datetime:
+          hours:
+            one: 1 ч.
+            other: "%{hours} ч."
+          minutes:
+            one: 1 м.
+            other: "%{minutes} м."
+        user: Пользователь
+        hours: Время
+        comments: Комментарий
+        display_cols: Показывать колонки
+        activity: Деятельность
+        seeAllCount: "( Показать все (%{count}) записи )"
