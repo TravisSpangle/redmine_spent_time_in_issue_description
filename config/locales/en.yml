@@ -19,3 +19,7 @@ en:
         display_cols: Display Columns
         activity: Activity
         seeAllCount: "( See all %{count} entries )"
+        error: "Error"
+        error_description: "The plugin could not write to the Issues Show file."
+        error_from_file: "Please copy and rename the file:"
+        error_to_file: "To:"

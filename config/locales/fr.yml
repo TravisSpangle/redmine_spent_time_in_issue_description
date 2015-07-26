@@ -19,3 +19,7 @@ fr:
         display_cols: "Afficher des colonnes"
         activity: "Activité"
         seeAllCount: "( Voir les %{count} entrées )"
+        error: "Erreur"
+        error_description: "Le plugin peut pas écrire dans le fichier Montrer questions."
+        error_from_file: "S'il vous plaît copier et renommer le fichier:"
+        error_to_file: "À:"

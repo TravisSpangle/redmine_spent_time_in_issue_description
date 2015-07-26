@@ -1,3 +1,16 @@
+<% setup_issue =  SetupIssueShow.new %>
+<% unless setup_issue.replacable? %>
+  <div class='error'>
+    <h2><%= t('plugin_spent_time_in_issue.error') %></h2>
+    <p>
+      <%= t('plugin_spent_time_in_issue.error_description') %>
+    </p> <p>
+      <%= t('plugin_spent_time_in_issue.error_from_file')+" #{setup_issue.show_file}" %>
+    </p> <p>
+      <%= t('plugin_spent_time_in_issue.error_to_file')+" #{setup_issue.issue_show_file}" %>
+    </p>
+</div>
+<% end %>
 <table>
   <tbody>
     <tr>
@@ -80,5 +93,7 @@
       label.error{ color: red; }
       div.placement_examples{ float: right; padding-right: 10px }
       div.placement_examples > img { border: 1px solid #505050; margin-top: 10px; width: 250px }
+      div.error { border-color:red; background-color: lightgoldenrodyellow; }
+      div.error h2 { color: red }
     </style>
 <% end %>

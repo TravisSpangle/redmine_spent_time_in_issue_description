@@ -19,3 +19,7 @@ ru:
         display_cols: Показывать колонки
         activity: Деятельность
         seeAllCount: "( Показать все (%{count}) записи )"
+        error: "ошибка"
+        error_description: "Плагин не мог писать в Вопросы Показать файл."
+        error_from_file: "Пожалуйста, копировать и переименовывать файл:"
+        error_to_file: "B:"
