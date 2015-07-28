@@ -1,7 +1,6 @@
 require 'redmine'
 require 'fileutils'
 require 'pathname_redmine_version'
-require 'Digest'
 
 # Identifies correct version of issues/VERSION.show.html.erb and
 # copies it to issues/show.html.erb
@@ -32,6 +31,6 @@ class SetupIssueShow
   end
 
   def replacable?
-    File.writable?(show_file.to_s) and Digest::SHA256.file(show_file).hexdigest.eql? Digest::SHA256.file(issue_show_file).hexdigest
+    File.writable?(show_file.to_s) and FileUtils.compare_file(show_file,issue_show_file)
   end
 end
