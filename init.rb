@@ -1,5 +1,4 @@
 require 'redmine'
-require 'issue_helper_patch'
 require 'setup_issue_show'
 
 Redmine::Plugin.register :redmine_spent_time_in_issue_description do
@@ -17,5 +16,8 @@ Redmine::Plugin.register :redmine_spent_time_in_issue_description do
 
   ActionDispatch::Callbacks.to_prepare do
     SetupIssueShow.new.replace
+  end
+  Rails.application.config.after_initialize do
+    require 'issue_helper_patch'
   end
 end
