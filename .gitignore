@@ -1,2 +1,6 @@
 
 app/views/issues/show.html.erb
+
+#ignore vim files
+*.swp
+*.swo
