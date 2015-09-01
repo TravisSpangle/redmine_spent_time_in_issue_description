@@ -1,21 +1,14 @@
 # Helper Patch to be include in Issue Helper
-module IssuesHelperPatch
-  def self.included(base) # :nodoc:
-    base.send(:include, InstanceMethods)
-  end
+IssuesHelper.class_eval do
+  def humanized_time(entry_hours)
+    hours = entry_hours.to_i
+    minutes = entry_hours * 60
+    minutes = (minutes - hours * 60).to_i
 
-  # Helper provides shorter conditional calls and humanized_time format
-  module InstanceMethods
-    def humanized_time(entry_hours)
-      hours = entry_hours.to_i
-      minutes = entry_hours * 60
-      minutes = (minutes - hours * 60).to_i
+    time_spent = humanized_hour(hours)
+    time_spent << ' ' << humanized_minute(minutes) unless minutes < 1
 
-      time_spent = humanized_hour(hours)
-      time_spent << ' ' << humanized_minute(minutes) unless minutes < 1
-
-      time_spent
-    end
+    time_spent
   end
 
   # Human readable format for Hour data
@@ -68,10 +61,4 @@ module IssuesHelperPatch
   def activity_shown?
     Setting.plugin_redmine_spent_time_in_issue_description['display_columns'].include? 'activity'
   end
-
-  def self.included(receiver)
-    receiver.send :include, InstanceMethods
-  end
 end
-
-IssuesHelper.send(:include, IssuesHelperPatch)
