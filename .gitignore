@@ -1,6 +1,8 @@
 
 app/views/issues/show.html.erb
 
+.idea
+
 #ignore vim files
 *.swp
 *.swo
