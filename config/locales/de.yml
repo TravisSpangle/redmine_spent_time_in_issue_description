@@ -1,0 +1,25 @@
+de:
+    plugin_spent_time_in_issue:
+        timeEntries: Zeiteinträge
+        spentOn: Aufgewendet am
+        max_display: Maximale Anzahl angezeigter Einträge
+        time_format: Zeitformat
+        time_format_decimal: Dezimal ( 1.5 )
+        time_format_human: Stundenweise ( 1hr )
+        datetime:
+          hours:
+            one: 1 Stunde
+            other: "%{hours} Stunden"
+          minutes:
+            one: 1 Minute
+            other: "%{minutes} Minuten"
+        user: Benutzer
+        hours: Stunden
+        comments: Kommentar
+        display_cols: Felder Anzeigen
+        activity: Aktivität
+        seeAllCount: "( Alle %{count} Einträge anzeigen )"
+        error: "Fehler"
+        error_description: "Es konnte nicht in das Ticket geschrieben werden."
+        error_from_file: "Bitte die Datei kopieren und umbenennen:"
+        error_to_file: "Zu:"
