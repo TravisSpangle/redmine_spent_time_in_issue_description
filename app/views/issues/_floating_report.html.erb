@@ -1,7 +1,7 @@
 <div id="issue-spenttime" >
   <h3>Spent Time Report</h3>
 
-  <% @issue.time_entries.last( Setting.plugin_redmine_spent_time_in_issue_description['spent_time_max_display'].to_i ).each_with_index do |entry, index| %>
+  <% @time_entries.last( Setting.plugin_redmine_spent_time_in_issue_description['spent_time_max_display'].to_i ).each_with_index do |entry, index| %>
     <div class="spenttimeentry <%= (index % 2 == 0 ? "even" : "odd") %>">
       <p>
         <%= content_tag(:span, format_date( entry.spent_on ) ) if spent_on_shown? %>

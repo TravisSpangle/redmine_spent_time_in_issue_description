@@ -15,7 +15,9 @@ Redmine::Plugin.register :redmine_spent_time_in_issue_description do
            partial: 'settings/spent_time_in_issue_description_settings')
 
   ActionDispatch::Callbacks.to_prepare do
+    require 'issues_controller_patch'
     SetupIssueShow.new.replace
+    IssuesController.send(:include, TimeEntriesPatch::IssuesControllerPatch)
   end
   Rails.application.config.after_initialize do
     require 'issue_helper_patch'

@@ -1,0 +1,25 @@
+zh:
+    plugin_spent_time_in_issue:
+        timeEntries: 工时记录
+        spentOn: 工时发生日期
+        max_display: 显示最大记录数
+        time_format: 工时显示格式
+        time_format_decimal: 小时-含小数 (如：1.5 )
+        time_format_human: 自适应格式 ( 如：1小时 ) 
+        datetime:
+          hours:
+            one: 1 小时
+            other: "%{hours} 小时"
+          minutes:
+            one: 1 分钟
+            other: "%{minutes} 分钟"
+        user: 用户
+        hours: 工时
+        comments: 备注
+        display_cols: 显示列
+        activity: 活动
+        seeAllCount: "( 查看所有 %{count} 个工时记录 )"
+        error: "系统错误"
+        error_description: "该插件不能向问题写入信息。"
+        error_from_file: "请复制并重命名文件："
+        error_to_file: "至文件："
