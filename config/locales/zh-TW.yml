@@ -1,0 +1,25 @@
+zh-TW:
+    plugin_spent_time_in_issue:
+        timeEntries: "記錄時間"
+        spentOn: "日期"
+        max_display: Time Entries Maximum Display
+        time_format: Time Format
+        time_format_decimal: Decimal ( 1.5 )
+        time_format_human: Human Readable ( 1hr )
+        datetime:
+          hours:
+            one: "1 小時"
+            other: "%{hours} 小時"
+          minutes:
+            one: "1 分鐘"
+            other: "%{minutes} 分鐘"
+        user: "使用者"
+        hours: "工時"
+        comments: "回應"
+        display_cols: Display Columns
+        activity: Activity
+        seeAllCount: "( 檢視全部 %{count} 筆記錄 )"
+        error: "Error"
+        error_description: "The plugin could not write to the Issues Show file."
+        error_from_file: "Please copy and rename the file:"
+        error_to_file: "To:"
